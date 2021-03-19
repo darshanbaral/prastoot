@@ -1,0 +1,19 @@
+{{ define "main" }} {{ $dat := .Site.Params.titleSlide }}
+<div id="slide-1" class="presentation-container">
+  <div
+    class="presentation-slide d-flex flex-column justify-content-around text-center"
+  >
+    <div>
+      <h1>{{ $dat.title | markdownify }}</h1>
+      <h2>{{ $dat.subtitle | markdownify }}</h2>
+    </div>
+    <div>
+      <h3>{{ $dat.author | markdownify }}</h3>
+      <h4>{{ $dat.date }}</h4>
+    </div>
+  </div>
+</div>
+{{ if $dat.next }}
+{{ partial "presentation" (dict "name" $dat.next "num" 2 "all" .) }}
+{{ end }}
+{{ end }}

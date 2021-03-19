@@ -1,0 +1,16 @@
+{{ $scratch := newScratch }}
+{{ $scratch.Delete "num" }}
+{{ $scratch.Add "num" .num }}
+
+{{ with .all.GetPage .name }}
+{{ $num := $scratch.Get "num" }}
+<div id="slide-{{ $num }}" class="presentation-container">
+  <div class="presentation-slide">
+    <h1 class="mb-5 pb-3 pt-3 border-bottom">{{ .Title }}</h1>
+    <div>{{ .Content }}</div>
+  </div>
+</div>
+{{ if .Params.next }}
+{{ partial "presentation" (dict "name" .Params.next "num" (add $num 1) "all" .) }}
+{{ end }}
+{{ end }}

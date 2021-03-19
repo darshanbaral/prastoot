@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+  {{- partial "head.html" . -}}
+  <body class="d-flex flex-column">
+    {{- partial "header.html" . -}}
+    <main class="flex-grow-1">{{- block "main" . }}{{- end }}</main>
+    {{- partial "footer.html" . -}}
+  </body>
+</html>
