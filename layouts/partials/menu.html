@@ -1,0 +1,10 @@
+{{ $scratch := newScratch }}
+{{ $scratch.Delete "num" }}
+{{ $scratch.Add "num" .num }}
+{{ with .all.GetPage .name }}
+{{ $num := $scratch.Get "num" }}
+<span>{{ $num }}. <a class="menu-item" href="#slide-{{ $num }}" onclick="hideMenu()" class="slide-title m-0">{{ .Title | markdownify }}</a></span>
+{{ if .Params.next }}
+{{ partial "menu" (dict "name" .Params.next "num" (add $num 1) "all" .) }}
+{{ end }}
+{{ end }}

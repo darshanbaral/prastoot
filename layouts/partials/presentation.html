@@ -1,15 +1,24 @@
 {{ $scratch := newScratch }}
 {{ $scratch.Delete "num" }}
 {{ $scratch.Add "num" .num }}
-
 {{ with .all.GetPage .name }}
 {{ $num := $scratch.Get "num" }}
-<div id="slide-{{ $num }}" class="presentation-container">
+<section id="slide-{{ $num }}" class="slide-container">
   <div class="presentation-slide">
-    <h1 class="mb-5 pb-3 pt-3 border-bottom">{{ .Title }}</h1>
-    <div>{{ .Content }}</div>
+    <div class="slide-header bg-white rounded shadow p-2">
+      <h1 class="slide-title m-0">
+        {{ .Title | markdownify }}
+      </h1>
+    </div>
+    <div class="slide-content {{ if .Params.template}}{{ .Params.template}}{{ end }}">
+      {{ if .Params.template}}
+      {{ partial (print "presentationContent/" .Params.template) . }}
+      {{ else }}
+      {{ partial "presentationContent/oneContent" . }}
+      {{ end }}
+    </div>
   </div>
-</div>
+</section>
 {{ if .Params.next }}
 {{ partial "presentation" (dict "name" .Params.next "num" (add $num 1) "all" .) }}
 {{ end }}

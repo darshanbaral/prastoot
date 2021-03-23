@@ -1,0 +1,47 @@
+<div class="menu">
+  <div class="hamburger-cross rounded" onclick="toggleMenu()">
+    <i class="bi bi-list"></i>
+  </div>
+  <div class="menu-container" style="display: none">
+    {{ $dat := .Site.Params.titleSlide }}
+    <span
+      >1.
+      <a
+        class="menu-item"
+        href="#slide-1"
+        class="slide-title m-0"
+        onclick="hideMenu()"
+        >{{ $dat.Title | markdownify }}</a
+      ></span
+    >
+    {{ if $dat.next }}
+    {{ partial "menu" (dict "name" $dat.next "num" 2 "all" .) }}
+    {{ end }}
+  </div>
+</div>
+<script>
+  const toggleMenu = () => {
+    const menu = document.querySelector(".menu-container");
+    menu.style.display === "none" ? showMenu() : hideMenu();
+  };
+
+  const hideMenu = () => {
+    const icon = document.querySelector(".hamburger-cross").children[0];
+    icon.classList.add("bi-list");
+    icon.classList.remove("bi-x");
+
+    const menu = document.querySelector(".menu-container");
+    menu.style.display = "none";
+    document.body.style.overflowY = "auto";
+  };
+
+  const showMenu = () => {
+    const icon = document.querySelector(".hamburger-cross").children[0];
+    icon.classList.remove("bi-list");
+    icon.classList.add("bi-x");
+
+    const menu = document.querySelector(".menu-container");
+    menu.style.display = "flex";
+    document.body.style.overflowY = "hidden";
+  };
+</script>

@@ -1,0 +1,3 @@
+{{ $split := split .Content "<!-- {{split}} -->" }}
+<div class="slide-content-panel">{{ index $split 0 | safeHTML }}</div>
+<div class="slide-content-panel">{{ index $split 1 | safeHTML }}</div>

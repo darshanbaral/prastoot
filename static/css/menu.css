@@ -1,0 +1,42 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.hamburger-cross {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dc3545;
+  background-color: #ffc107;
+  position: absolute;
+  left: 0.5em;
+  top: 0.5em;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 20;
+}
+.menu-container {
+  color: white;
+  padding: 5vh 5vw 5vh 5vw;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: #0d6efdde;
+  z-index: 10;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 0.85em;
+}
+.menu-item {
+  display: inline-block;
+  max-width: 40vw;
+  color: white;
+  text-decoration: none;
+}
+.menu-item:hover {
+  color: white;
+  text-decoration: underline;
+}
