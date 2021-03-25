@@ -4,39 +4,33 @@
   left: 0;
 }
 .hamburger-cross {
-  width: 30px;
-  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #dc3545;
-  background-color: #ffc107;
-  position: absolute;
-  left: 0.5em;
-  top: 0.5em;
-  font-size: 1.5em;
+  color: black;
+  position: fixed;
+  right: 3.5vw;
+  top: 2vw;
+  font-size: 2em;
   cursor: pointer;
   z-index: 20;
 }
 .menu-container {
-  color: white;
-  padding: 5vh 5vw 5vh 5vw;
+  color: rgb(0, 38, 255);
+  padding: 5vw;
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background-color: #0d6efdde;
+  background-color: #fffffff0;
   z-index: 10;
   flex-direction: column;
   flex-wrap: wrap;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 .menu-item {
   display: inline-block;
   max-width: 40vw;
-  color: white;
-  text-decoration: none;
-}
-.menu-item:hover {
-  color: white;
-  text-decoration: underline;
+  color: rgb(0, 38, 255);
+  padding: 0.25em;
+  margin: 0.25em;
 }

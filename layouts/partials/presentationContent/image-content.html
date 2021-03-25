@@ -1,6 +1,5 @@
 <div class="slide-image-panel">
-  <div class="panel-image-container">
-    <img class="panel-image" src="{{ .Params.image | relURL }}" />
+  <div class="panel-image-container rounded bg-white" style="background-image: url('{{ .Params.image | relURL }}');">
     {{ if .Params.caption }}
     <p class="presentation-image-caption w-100 text-center m-0">
       {{ .Params.caption }}
@@ -9,4 +8,4 @@
   {{ end }}
 </div>
 
-<div class="slide-content-panel flex-grow-1">{{ .Content }}</div>
+<div class="slide-content-panel">{{ .Content }}</div>

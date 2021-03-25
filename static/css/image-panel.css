@@ -1,12 +1,15 @@
 .slide-image-panel {
-  margin-right: 1em;
+  width: 49%;
+  height: 100%;
 }
 .panel-image-container {
   position: relative;
-}
-.panel-image {
-  max-height: 65vh;
-  max-width: 41vw;
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
 }
 .presentation-image-caption {
   position: absolute;
