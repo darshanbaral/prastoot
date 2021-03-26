@@ -1,0 +1,9 @@
+<div class="image slide-content-panel">
+  <div class="panel-image-container rounded bg-white" style="background-image: url('{{ .Params.image | relURL }}');">
+    {{ if .Params.caption }}
+    <p class="presentation-image-caption w-100 text-center m-0">
+      {{ .Params.caption }}
+    </p>
+  </div>
+  {{ end }}
+</div>

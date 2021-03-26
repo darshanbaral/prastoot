@@ -43,28 +43,13 @@ section.slide-container {
 .two-content > div {
   max-width: 49%;
 }
-.slide-content-panel {
-  width: 49%;
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
-  border: solid 1px gray;
-  border-radius: 0.25rem !important;
-  background-color: #fff !important;
-  padding: 0.5rem !important;
-}
-.slide-image-panel {
-  border: solid 1px gray;
-  border-radius: 0.25rem !important;
-}
-.one-content.slide-content-panel {
-  width: 100%;
-}
 .prev-next {
   font-size: 1.2em;
-  cursor: pointer;
   color: #0d6efd;
 }
 .prev-next:hover {
   color: #0d6efd;
+}
+.prev-next > i {
+  cursor: pointer;
 }

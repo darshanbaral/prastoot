@@ -14,7 +14,7 @@
       ></span
     >
     {{ if $dat.next }}
-    {{ partial "menu" (dict "name" $dat.next "num" 2 "all" .) }}
+    {{ partial "menu" (dict "name" $dat.next "num" 2 "all" . "prev" (slice $dat.next)) }}
     {{ end }}
   </div>
 </div>

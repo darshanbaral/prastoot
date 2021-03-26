@@ -61,6 +61,9 @@ pre {
   display: inline-block;
   padding: 0.25em;
   line-height: 1.1em;
+  background-color: #272822;
+  color: white;
+  overflow: auto;
 }
 blockquote {
   color: #585858;

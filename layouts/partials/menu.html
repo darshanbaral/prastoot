@@ -1,10 +1,13 @@
 {{ $scratch := newScratch }}
 {{ $scratch.Delete "num" }}
 {{ $scratch.Add "num" .num }}
+{{ $scratch.Add "prev" .prev }}
 {{ with .all.GetPage .name }}
 {{ $num := $scratch.Get "num" }}
+{{ $prev := $scratch.Get "prev" }}
+{{ $check := not (in $prev .Params.next) }}
 <span class="menu-item">{{ $num }}. <a href="#slide-{{ $num }}" onclick="hideMenu()" class="slide-title m-0">{{ .Title | markdownify }}</a></span>
-{{ if .Params.next }}
-{{ partial "menu" (dict "name" .Params.next "num" (add $num 1) "all" .) }}
+{{ if and .Params.next $check }}
+{{ partial "menu" (dict "name" .Params.next "num" (add $num 1) "all" . "prev" (append $prev (slice .Params.next))) }}
 {{ end }}
 {{ end }}

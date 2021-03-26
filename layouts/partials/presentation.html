@@ -1,8 +1,14 @@
 {{ $scratch := newScratch }}
 {{ $scratch.Delete "num" }}
 {{ $scratch.Add "num" .num }}
+{{ $scratch.Add "prev" .prev }}
 {{ with .all.GetPage .name }}
 {{ $num := $scratch.Get "num" }}
+{{ $prev := $scratch.Get "prev" }}
+{{ $check := not (in $prev .Params.next) }}
+{{ if (in $prev .Params.next) }}
+{{ errorf "Circular reference detected at %q" .Path }}
+{{ end }}
 <section id="slide-{{ $num }}" class="slide-container">
   <div class="presentation-slide">
     <div class="slide-header bg-white rounded p-2">
@@ -27,6 +33,7 @@
         <span class="prev-next" onclick="goTo({{ sub $num 1 }})">
           <i class="bi bi-chevron-up"></i>
         </span>
+        <span>&middot;</span>
         <span class="prev-next" onclick="goTo({{ add $num 1 }})">
           <i class="bi bi-chevron-down"></i>
         </span>
@@ -34,6 +41,7 @@
       <span class="prev-next" onclick="goTo({{ sub $num 1 }})">
         <i class="bi bi-chevron-up"></i>
       </span>
+      <span>&middot;</span>
       <span class="text-secondary" style="font-size: 1.2em;">
         <i class="bi bi-chevron-down"></i>
       </span>
@@ -45,7 +53,7 @@
     </footer>
   </div>
 </section>
-{{ if .Params.next }}
-{{ partial "presentation" (dict "name" .Params.next "num" (add $num 1) "all" .) }}
+{{if and $check .Params.next }}
+{{ partial "presentation" (dict "name" .Params.next "num" (add $num 1) "all" . "prev" (append $prev (slice .Params.next))) }}
 {{ end }}
 {{ end }}

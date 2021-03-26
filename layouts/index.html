@@ -10,8 +10,8 @@
     </div>
     <span>&mdash;</span>
     <div class="presentation-metadata">
-      <h3>{{ $dat.author | markdownify }}</h3>
-      <h4>{{ $dat.date }}</h4>
+      <h3>{{ .Site.Params.author | markdownify }}</h3>
+      <h4>{{ .Site.Params.date }}</h4>
       {{ if $dat.next }}
       <span class="prev-next" onclick="goTo(2)"><i class="bi bi-chevron-down"></i></span>
       {{ end }}
@@ -19,6 +19,6 @@
   </div>
 </section>
 {{ if $dat.next }}
-{{ partial "presentation" (dict "name" $dat.next "num" 2 "all" .) }}
+{{ partial "presentation" (dict "name" $dat.next "num" 2 "all" . "prev" (slice $dat.next)) }}
 {{ end }}
 {{ end }}
