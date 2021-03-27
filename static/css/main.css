@@ -44,6 +44,9 @@ h3 {
 h4 {
   font-size: 1em;
 }
+p {
+  margin: 0.25rem 0 0.5rem 0;
+}
 a {
   text-decoration: none;
 }
@@ -57,13 +60,11 @@ code {
   font-family: "Ubuntu Mono", monospace;
 }
 pre {
-  margin: 0;
-  display: inline-block;
   padding: 0.25em;
-  line-height: 1.1em;
   background-color: #272822;
   color: white;
   overflow: auto;
+  margin-bottom: 0.25rem;
 }
 blockquote {
   color: #585858;
@@ -95,3 +96,6 @@ td {
   text-align: left;
 }
 /* */
+.w-49 {
+  width: 49% !important;
+}

@@ -2,58 +2,68 @@
 {{ $scratch.Delete "num" }}
 {{ $scratch.Add "num" .num }}
 {{ $scratch.Add "prev" .prev }}
+<!-- -->
 {{ with .all.GetPage .name }}
 {{ $num := $scratch.Get "num" }}
 {{ $prev := $scratch.Get "prev" }}
+<!-- slide header -->
 {{ $check := not (in $prev .Params.next) }}
 {{ if (in $prev .Params.next) }}
 {{ errorf "Circular reference detected at %q" .Path }}
 {{ end }}
+{{ $templates := split .Params.template "-" }}
 <section id="slide-{{ $num }}" class="slide-container">
   <div class="presentation-slide">
+    <!-- slide header -->
     <div class="slide-header bg-white rounded p-2">
       <h1 class="slide-title m-0">{{ .Title | markdownify }}</h1>
     </div>
-    <div
-      class="slide-content {{ if .Params.template}}{{ .Params.template}}{{ end }}"
-    >
-      {{ if .Params.template}}
-      {{ partial (print "presentationContent/" .Params.template) . }}
+    <!-- slide content -->
+    <div class="slide-content">
+      {{ if eq (len $templates) 1 }}
+      <div class="slide-content-panel w-100 h-100 {{ index $templates 0 }}">
+        {{ partial (print "presentationContent/" .Params.template) (dict "all" .) }}
+      </div>
+      {{ else if eq (len $templates) 2 }}
+      <div class="slide-content-panel w-49 h-100 {{ index $templates 0 }}">
+        {{ partial (print "presentationContent/" (index $templates 0)) (dict "all" . "ind" 0) }}
+      </div>
+      <div class="slide-content-panel w-49 h-100 {{ index $templates 1 }}">
+        {{ partial (print "presentationContent/" (index $templates 1)) (dict "all" . "ind" 1) }}
+      </div>
       {{ else }}
-      {{ partial "presentationContent/oneContent" . }}
+      {{ errorf "'template' is invalid for %q" .Path }}
       {{ end }}
     </div>
+    <!-- slide footer -->
     <footer class="slide-footer">
-      <span class="text-start" style="width: 15em;">
-        <time>{{ .Site.Params.date }}</time> &middot;
-        {{ .Site.Params.author }}
+      <span class="text-start" style="width: 15em">
+        <time>{{ .Site.Params.date }}</time> &middot; {{ .Site.Params.author }}
       </span>
-      <div class="text-center" style="width: 15em;">
-      {{ if .Params.next }}
+      <div class="d-flex justify-content-around" style="width: 5em">
+        {{ if .Params.next }}
         <span class="prev-next" onclick="goTo({{ sub $num 1 }})">
-          <i class="bi bi-chevron-up"></i>
+          <i class="bi bi-arrow-up-square-fill"></i>
         </span>
-        <span>&middot;</span>
         <span class="prev-next" onclick="goTo({{ add $num 1 }})">
-          <i class="bi bi-chevron-down"></i>
+          <i class="bi bi-arrow-down-square-fill"></i>
         </span>
-      {{ else }}
-      <span class="prev-next" onclick="goTo({{ sub $num 1 }})">
-        <i class="bi bi-chevron-up"></i>
-      </span>
-      <span>&middot;</span>
-      <span class="text-secondary" style="font-size: 1.2em;">
-        <i class="bi bi-chevron-down"></i>
-      </span>
-      {{ end }}
-    </div>
-      <div class="text-end" style="width: 15em;">
+        {{ else }}
+        <span class="prev-next" onclick="goTo({{ sub $num 1 }})">
+          <i class="bi bi-arrow-up-square-fill"></i>
+        </span>
+        <span class="text-secondary" style="font-size: 1.5em">
+          <i class="bi bi-arrow-down-square-fill"></i>
+        </span>
+        {{ end }}
+      </div>
+      <div class="text-end" style="width: 15em">
         <a href="#slide-{{ $num }}">#{{ $num }}</a>
       </div>
     </footer>
   </div>
 </section>
 {{if and $check .Params.next }}
-{{ partial "presentation" (dict "name" .Params.next "num" (add $num 1) "all" . "prev" (append $prev (slice .Params.next))) }}
+{{ partial "presentation" (dict "name" .Params.next "num" (add $num 1) "all" . "prev" (append (slice .Params.next) $prev)) }}
 {{ end }}
 {{ end }}

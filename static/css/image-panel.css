@@ -11,6 +11,7 @@
   background-position: center;
   overflow: hidden;
 }
+.presentation-table-caption,
 .presentation-image-caption {
   position: absolute;
   bottom: 0;
@@ -18,4 +19,5 @@
   background-color: #ffffff5c;
   padding: 0.25em;
   font-style: italic;
+  font-size: 0.75em;
 }

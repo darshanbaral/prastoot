@@ -13,7 +13,9 @@
       <h3>{{ .Site.Params.author | markdownify }}</h3>
       <h4>{{ .Site.Params.date }}</h4>
       {{ if $dat.next }}
-      <span class="prev-next" onclick="goTo(2)"><i class="bi bi-chevron-down"></i></span>
+      <span class="prev-next" onclick="goTo(2)">
+        <i class="bi bi-arrow-down-square-fill"></i>
+      </span>
       {{ end }}
     </div>
   </div>

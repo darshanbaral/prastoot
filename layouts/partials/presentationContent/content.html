@@ -1,0 +1,7 @@
+{{ $contents := split .all.Content "|||" }}
+
+{{ if and (eq (len $contents) 2) (in (slice 0 1) .ind) }}
+{{ index $contents .ind | safeHTML }}
+{{ else }}
+{{ .all.Content }}
+{{ end }}

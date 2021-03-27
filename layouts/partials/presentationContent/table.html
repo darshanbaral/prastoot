@@ -1,0 +1,15 @@
+<div class="panel-table-container w-100 h-100 overflow-auto position-relative">
+  {{ $contents := split .all.Content "|||" }}
+
+  {{ if and (eq (len $contents) 2) (in (slice 0 1) .ind) }}
+  {{ index $contents .ind | markdownify }}
+  {{ else }}
+  {{ .all.Content }}
+  {{ end }}
+  
+  {{ if .all.Params.caption }}
+  <p class="presentation-table-caption m-0">
+    {{ .all.Params.caption }}
+  </p>
+  {{ end }}
+</div>

@@ -1,3 +1,9 @@
-<div class="code slide-content-panel h-100">
-    <div class="w-100 h-100" style="max-height: 100%; overflow: auto;">{{ .Content }}</div>
+<div class="w-100 h-100" style="max-height: 100%; overflow: auto">
+  {{ $contents := split .all.Content "|||" }}
+
+  {{ if and (eq (len $contents) 2) (in (slice 0 1) .ind) }}
+  {{ index $contents .ind | safeHTML }}
+  {{ else }}
+  {{ .all.Content }}
+  {{ end }}
 </div>
