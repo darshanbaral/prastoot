@@ -1,0 +1,16 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "My Presentation"
+theme = "prastoot"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[params]
+date = "2021-03-18"
+author = "Darshan Baral"
+
+  [params.titleSlide]
+  title = "**Prastoot**"
+  subtitle = "Making presentations using `hugo`"
+  next = "S01_about"
