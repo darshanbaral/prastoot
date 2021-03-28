@@ -2,20 +2,20 @@
   <div class="hamburger-cross rounded" onclick="toggleMenu()">
     <i class="bi bi-list"></i>
   </div>
-  <div class="menu-container" style="display: none">
+  <div class="menu-container" style="display: none; position: relative">
     {{ $dat := .Site.Params.titleSlide }}
     <span class="menu-item"
       >1.
-      <a
-        href="#slide-1"
-        class="slide-title m-0"
-        onclick="hideMenu()"
+      <a href="#slide-1" class="slide-title m-0" onclick="hideMenu()"
         >{{ $dat.Title | markdownify }}</a
       ></span
     >
     {{ if $dat.next }}
     {{ partial "menu" (dict "name" $dat.next "num" 2 "all" . "prev" (slice $dat.next)) }}
     {{ end }}
+    <p class="about-theme text-dark">
+      <a href="https://github.com/darshanbaral/prastoot">prastoot</a> theme by <a href="https://www.darshanbaral.com/">darshan baral</a>
+    </p>
   </div>
 </div>
 <script>

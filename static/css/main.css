@@ -33,10 +33,10 @@ h4 {
   margin: 0 0 0.25em 0;
 }
 h1 {
-  font-size: 1.8em;
+  font-size: 1.6em;
 }
 h2 {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 h3 {
   font-size: 1.2em;
@@ -57,7 +57,7 @@ a:hover {
 }
 pre,
 code {
-  font-family: "Ubuntu Mono", monospace;
+  font-family: "Inconsolata", monospace;
 }
 pre {
   padding: 0.25em;
