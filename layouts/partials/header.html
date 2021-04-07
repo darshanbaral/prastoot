@@ -6,8 +6,8 @@
     {{ $dat := .Site.Params.titleSlide }}
     <span class="menu-item"
       >1.
-      <a href="#slide-1" class="slide-title m-0" onclick="hideMenu()"
-        >{{ $dat.Title | markdownify }}</a
+      <span onclick="goTo(1)" class="slide-name m-0">
+        {{ $dat.Title | markdownify }}</span
       ></span
     >
     {{ if $dat.next }}

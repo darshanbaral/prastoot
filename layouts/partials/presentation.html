@@ -12,7 +12,7 @@
 {{ errorf "Circular reference detected at %q" .Path }}
 {{ end }}
 {{ $templates := split .Params.template "-" }}
-<section id="slide-{{ $num }}" class="slide-container">
+<section id="slide-{{ $num }}" class="slide-container" style="display: flex;">
   <div class="presentation-slide">
     <!-- slide header -->
     <div class="slide-header bg-white rounded p-2">

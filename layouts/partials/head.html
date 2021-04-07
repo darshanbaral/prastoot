@@ -14,21 +14,25 @@
   />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Quicksand&family=Inconsolata&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Lato&family=Noto+Serif&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="{{ `/css/main.css` | relURL }}" />
-  <link rel="stylesheet" href="{{ `/css/menu.css` | relURL }}" />
-  <link rel="stylesheet" href="{{ `/css/image-panel.css` | relURL }}" />
-  <link rel="stylesheet" href="{{ `/css/slide.css` | relURL }}" />
-  <link rel="stylesheet" href="{{ `/css/templates.css` | relURL }}" />
+
+  {{ $styles := resources.Get "scss/main.sass" | toCSS | minify | fingerprint }}
+  <link
+    rel="stylesheet"
+    href="{{ $styles.Permalink }}"
+    integrity="{{ $styles.Data.Integrity }}"
+  />
 
   <script>
     const goTo = (id) => {
-      window.location.hash = `slide${id}`;
-      document.querySelector(`#slide-${id}`).scrollIntoView({
+      newSlide = `slide-${id}`;
+      // window.location.hash = newSlide;
+      document.querySelector(`#${newSlide}`).scrollIntoView({
         behavior: "smooth",
       });
+      hideMenu();
     };
   </script>
 </head>

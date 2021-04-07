@@ -6,7 +6,10 @@
 {{ $num := $scratch.Get "num" }}
 {{ $prev := $scratch.Get "prev" }}
 {{ $check := not (in $prev .Params.next) }}
-<span class="menu-item">{{ $num }}. <a href="#slide-{{ $num }}" onclick="hideMenu()" class="slide-title m-0">{{ .Title | markdownify }}</a></span>
+<span class="menu-item">{{ $num }}.
+    <span onclick="goTo({{ $num }})" class="slide-title m-0">
+    {{ .Title | markdownify }}</span>
+</span>
 {{ if and .Params.next $check }}
 {{ partial "menu" (dict "name" .Params.next "num" (add $num 1) "all" . "prev" (append $prev (slice .Params.next))) }}
 {{ end }}

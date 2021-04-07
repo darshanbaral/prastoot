@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $dat := .Site.Params.titleSlide }}
-<section id="slide-1" class="slide-container">
+<section id="slide-1" class="slide-container" style="display: flex;">
   <div
     class="presentation-cover text-center"
   >
@@ -9,15 +9,17 @@
       <h2>{{ $dat.subtitle | markdownify }}</h2>
     </div>
     <span>&mdash;</span>
-    <div class="presentation-metadata">
+    <footer class="presentation-metadata">
       <h3>{{ .Site.Params.author | markdownify }}</h3>
       <h4>{{ .Site.Params.date }}</h4>
       {{ if $dat.next }}
+      <div>
       <span class="prev-next" onclick="goTo(2)">
         <i class="bi bi-arrow-down-square-fill"></i>
       </span>
-      {{ end }}
     </div>
+      {{ end }}
+    </footer>
   </div>
 </section>
 {{ if $dat.next }}
