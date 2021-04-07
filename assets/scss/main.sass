@@ -1,0 +1,200 @@
+*
+	box-sizing: border-box
+html
+	font-family: 'Lato', sans-serif
+	font-size: calc(max(15px, 3vh))
+	scroll-behavior: smooth
+body
+	background-color: white
+	position: relative
+header
+	z-index: 2
+main
+	width: calc(max(800px, 1.778 * 100vh))
+	height: 100vh
+	overflow: hidden
+	z-index: 1
+	scroll-snap-type: y mandatory
+	margin: auto
+section
+	&.slide-container
+		scroll-snap-align: center
+		width: 100%
+		height: calc(max(100vh, 500px))
+		// display: flex
+		justify-content: center
+		align-items: center
+	.presentation-cover, .presentation-slide
+		width: 100%
+		height: 100%
+		padding: 2.5vh
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		.slide-header
+			width: 100%
+			display: flex
+			align-items: center
+		.slide-content
+			height: 70%
+			width: 100%
+			display: flex
+			justify-content: space-between
+			overflow: hidden
+		footer.slide-footer
+			height: 5%
+			width: 100%
+			display: flex
+			justify-content: space-between
+			align-items: center
+			font-size: 0.85em
+.prev-next
+	font-size: 1.5em
+	color: #3782f3
+	&:hover
+		color: #0666f7
+	& > i
+		cursor: pointer
+h1, h2, h3, h4, th
+	font-family: 'Noto Serif', serif
+	margin: 0 0 0.25em 0
+h1
+	font-size: 1.6em
+h2
+	font-size: 1.4em
+h3
+	font-size: 1.2em
+h4
+	font-size: 1em
+p
+	margin: 0.25rem 0 0.5rem 0
+	&:empty
+		display: none
+a
+	text-decoration: none
+	&:hover
+		cursor: pointer
+		text-decoration: underline
+		color: inherit
+pre, code
+	font-family: "Inconsolata", monospace
+pre
+	padding: 0.25em
+	background-color: #272822
+	color: white
+	overflow: auto
+	margin-bottom: 0.25rem
+blockquote
+	color: #585858
+	margin: 0
+	padding: 0.25em
+	margin-bottom: 0.5em
+	border-left: solid 3px gray
+	background-color: #f0f0f0
+	& > p
+		margin: 0
+table
+	border-collapse: collapse
+	display: block
+	overflow: auto
+thead
+	border-top: solid 1px black
+tbody
+	border-bottom: solid 1px black
+th, td
+	border: solid 1px black
+	padding: 0.25em 0.5em
+	text-align: left
+.menu
+	position: fixed
+	top: 0
+	left: 0
+	.hamburger-cross
+		display: flex
+		justify-content: center
+		align-items: center
+		color: black
+		position: fixed
+		right: 3.5vw
+		top: 0
+		font-size: 2em
+		cursor: pointer
+		z-index: 20
+	.menu-container
+		color: rgb(0, 38, 255)
+		padding: 5vw
+		width: 100vw
+		height: 100vh
+		position: fixed
+		background-color: #fffffff0
+		z-index: 10
+		flex-direction: column
+		flex-wrap: wrap
+		font-size: 0.9em
+		.menu-item
+			display: inline-block
+			max-width: 40vw
+			color: rgb(0, 38, 255)
+			padding: 0.25em
+			margin: 0.25em
+			.slide-name, .slide-title
+				&:hover
+					cursor: pointer
+					background-color: khaki
+		.about-theme
+			position: fixed
+			bottom: 1em
+			width: 100%
+			text-align: center
+.slide-content
+	.w-49
+		width: 49% !important
+	.slide-content-panel
+		width: 49%
+		display: flex
+		flex-direction: column
+		max-height: 100%
+		border: solid 1px gray
+		border-radius: 0.25rem
+		background-color: #fff
+		padding: 0.5rem
+		overflow: auto
+		&.code, &.code > highlight
+			background-color: #272822
+			width: 100%
+			height: 100%
+			pre, .highlight > pre
+				width: 100%
+				height: 100%
+				max-height: 100%
+				overflow: auto
+		&.iframe, &.image
+			padding: 0
+		&.image
+			.panel-image-container
+				position: relative
+				height: 100%
+				width: 100%
+				background-size: contain
+				background-repeat: no-repeat
+				background-position: center
+				overflow: hidden
+		&.table, &.iframe
+			display: flex
+			justify-content: center
+			align-items: center
+		&.table
+			.panel-table-container
+				& > table
+					margin: auto
+					display: table
+.presentation-table-caption,
+.presentation-image-caption
+	position: absolute
+	bottom: 0
+	margin: 0
+	background-color: #ffffff5c
+	padding: 0.25em
+	font-style: italic
+	font-size: 0.75em
+	width: 100%

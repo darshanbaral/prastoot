@@ -26,12 +26,30 @@
   />
 
   <script>
+    window.onload = () => {
+      let initialSlideNum = window.location.hash.split("-")[1];
+      let initialSlide = document.querySelector(`#slide-${initialSlideNum}`);
+      if (initialSlide) {
+        goTo(initialSlideNum);
+      }
+    };
+
+    window.onbeforeunload = () => {
+      let initialSlideNum = window.location.hash.split("-")[1];
+      let initialSlide = document.querySelector(`#slide-${initialSlideNum}`);
+      if (initialSlide) {
+        goTo(initialSlideNum);
+      }
+    };
+
+    let currSlideNum = 1;
     const goTo = (id) => {
+      currSlide = `slide-${currSlideNum}`;
       newSlide = `slide-${id}`;
       // window.location.hash = newSlide;
-      document.querySelector(`#${newSlide}`).scrollIntoView({
-        behavior: "smooth",
-      });
+      document.querySelector(`#${currSlide}`).style.display = "none";
+      document.querySelector(`#${newSlide}`).style.display = "flex";
+      currSlideNum = id;
       hideMenu();
     };
   </script>
