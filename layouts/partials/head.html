@@ -26,24 +26,23 @@
   />
 
   <script>
-    window.onload = () => {
-      let initialSlideNum = window.location.hash.split("-")[1];
-      let initialSlide = document.querySelector(`#slide-${initialSlideNum}`);
-      if (initialSlide) {
-        goTo(initialSlideNum);
-      }
-    };
-
-    window.onbeforeunload = () => {
-      let initialSlideNum = window.location.hash.split("-")[1];
-      let initialSlide = document.querySelector(`#slide-${initialSlideNum}`);
-      if (initialSlide) {
-        goTo(initialSlideNum);
-      }
-    };
+    document.addEventListener("DOMContentLoaded", () => currentPage());
+    window.addEventListener("hashchange", () => currentPage());
 
     let currSlideNum = 1;
     const goTo = (id) => {
+      //currSlide = `slide-${currSlideNum}`;
+      newSlide = `#slide-${id}`;
+      // window.location.hash = newSlide;
+      history.replaceState(null, null, newSlide);
+      makeVisible(id);
+      //document.querySelector(`#${currSlide}`).style.display = "none";
+      //document.querySelector(`#${newSlide}`).style.display = "flex";
+      //currSlideNum = id;
+      //hideMenu();
+    };
+
+    const makeVisible = (id) => {
       currSlide = `slide-${currSlideNum}`;
       newSlide = `slide-${id}`;
       // window.location.hash = newSlide;
@@ -51,6 +50,14 @@
       document.querySelector(`#${newSlide}`).style.display = "flex";
       currSlideNum = id;
       hideMenu();
+    };
+
+    const currentPage = () => {
+      let initialSlideNum = window.location.hash.split("-")[1];
+      let initialSlide = document.querySelector(`#slide-${initialSlideNum}`);
+      if (initialSlide) {
+        makeVisible(initialSlideNum);
+      }
     };
   </script>
 </head>

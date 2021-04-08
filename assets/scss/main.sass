@@ -115,14 +115,17 @@ th, td
 		align-items: center
 		color: black
 		position: fixed
-		right: 3.5vw
+		right: calc((100vw - (1.778 * 100vh)) / 2)
 		top: 0
 		font-size: 2em
 		cursor: pointer
 		z-index: 20
 	.menu-container
 		color: rgb(0, 38, 255)
-		padding: 5vw
+		padding-top: 5vh
+		padding-bottom: 5vh
+		padding-left: calc((100vw - (1.778 * 100vh)) / 2)
+		padding-right: calc((100vw - (1.778 * 100vh)) / 2)
 		width: 100vw
 		height: 100vh
 		position: fixed
@@ -144,7 +147,7 @@ th, td
 		.about-theme
 			position: fixed
 			bottom: 1em
-			width: 100%
+			width: calc(max(800px, 1.778 * 100vh))
 			text-align: center
 .slide-content
 	.w-49
